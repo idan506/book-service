@@ -66,15 +66,6 @@ public class BookService {
     //create new book
     public Book createBook(Book book) throws UnsupportedEncodingException {
         BookEntity b = bookConvert.toEntity(book);
-//        b.setName(book.getName());
-//        b.setISBN(book.getISBN());
-//        b.setShortDescription(book.getShortDescription());
-//        b.setFlag(book.isFlag());
-//        b.setStatus(book.isStatus());
-//        b.setQuantity(book.getQuantity());
-//        b.setImage(Base64.getDecoder().decode(book.getImage()));
-//        b.setPublishYear(book.getPublishYear());
-//        b.setAuthor(book.getAuthor());
         b = repository.save(b);
         return bookConvert.toModel(b);
     }
