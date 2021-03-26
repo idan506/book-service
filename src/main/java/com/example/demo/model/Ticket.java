@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Ticket {
     private long id;
-    private long idUser;
+    private String idUser;
     private boolean status;
 
     private List<Book> books;
@@ -30,11 +30,11 @@ public class Ticket {
         this.id = id;
     }
 
-    public long getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(long idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 

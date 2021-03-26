@@ -3,8 +3,6 @@ package com.example.demo.entity;
 import com.example.demo.convert.Base64StringConverter;
 
 import javax.persistence.*;
-import javax.persistence.metamodel.ListAttribute;
-import java.util.Date;
 import java.util.List;
 
 @Entity

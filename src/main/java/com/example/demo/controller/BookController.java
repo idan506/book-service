@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -34,7 +35,9 @@ public class BookController {
 
     //list book user co the muon
     @GetMapping("/borrow")
-    public List<Book> getAllBooksByStatus(){ return  bookService.getAllBookAvailable();}
+    public List<Book> getAllBooksByStatus(){
+
+        return  bookService.getAllBookAvailable();}
 
     @GetMapping("/{id}")
     public Book findBookByid(@PathVariable(name = "id")long id){

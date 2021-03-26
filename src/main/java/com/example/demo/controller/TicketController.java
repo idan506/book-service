@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value="/ticket")
@@ -36,7 +37,8 @@ public class TicketController {
     }
 
     @GetMapping("/list")
-    public List<Ticket> listTicket(){
-        return ticketService.listTicket(3);
+    public List<Ticket> listTicket(@RequestHeader Map<String, String> headers){
+        String user = headers.get("x-user");
+        return ticketService.listTicket(user);
     }
 }

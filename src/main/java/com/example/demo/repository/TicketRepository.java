@@ -20,7 +20,7 @@ public interface TicketRepository extends JpaRepository<TicketEntity,Long> {
     //list ticket da duoc idUser muon
     @Modifying
     @Query(value = "SELECT t from TicketEntity t where t.idUser = :id and t.status = false")
-    List<TicketEntity> listTicket(@Param("id") long id);
+    List<TicketEntity> listTicket(@Param("id") String id);
 
     @Modifying
     @Query(value = "select t from TicketEntity t where t.status = true")

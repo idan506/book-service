@@ -9,7 +9,7 @@ import java.util.List;
 public class TicketEntity extends AbstractBaseEntity {
 
     @Column
-    private long idUser;
+    private String idUser;
 
 //    @Column
 //    private long idBook;
@@ -37,11 +37,11 @@ public class TicketEntity extends AbstractBaseEntity {
     @Column
     private boolean status;
 
-    public long getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(long idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 

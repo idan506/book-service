@@ -51,7 +51,7 @@ public class TicketService {
     }
 
     @Transactional
-    public List<Ticket> listTicket(long id){
+    public List<Ticket> listTicket(String id){
         List<Ticket> result = ticketRepository.listTicket(id).stream()
                 .map(ticket -> ticketConvert.toModel(ticket))
                 .collect(Collectors.toList());
