@@ -26,4 +26,7 @@ public interface TicketRepository extends JpaRepository<TicketEntity,Long> {
     @Query(value = "select t from TicketEntity t where t.status = true")
     List<TicketEntity> listTicketByStatusTrue();
 
+    @Modifying
+    @Query(value = "select t from TicketEntity t where MONTH(t.dayOfHire) = MONTH(NOW()) and YEAR(t.dayOfHire) = YEAR(NOW())")
+    List<TicketEntity> listTicketExport();
 }

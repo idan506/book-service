@@ -7,8 +7,13 @@ public class Ticket {
     private long id;
     private String idUser;
     private boolean status;
+    private Date dayOfHire;
+
+    private Date expirationDate;
 
     private List<Book> books;
+
+
 
     public List<Book> getBooks() {
         return books;
@@ -18,9 +23,7 @@ public class Ticket {
         this.books = books;
     }
 
-    private Date dayOfHire;
 
-    private Date expirationDate;
 
     public long getId() {
         return id;

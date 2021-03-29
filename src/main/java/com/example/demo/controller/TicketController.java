@@ -41,4 +41,9 @@ public class TicketController {
         String user = headers.get("x-user");
         return ticketService.listTicket(user);
     }
+
+    @GetMapping("/export")
+    public List<Ticket> listTicketExport(){
+        return ticketService.listTicketExport();
+    }
 }

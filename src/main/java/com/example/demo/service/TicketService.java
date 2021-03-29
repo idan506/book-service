@@ -93,4 +93,11 @@ public class TicketService {
         bookRepository.saveAll(bookEntities);
         return ticketConvert.toModel(t);
     }
+
+    @Transactional
+    public List<Ticket> listTicketExport(){
+        return ticketRepository.listTicketExport().stream()
+                .map(ticket -> ticketConvert.toModel(ticket))
+                .collect(Collectors.toList());
+    }
 }
