@@ -11,8 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.io.UnsupportedEncodingException;
-import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,8 +47,6 @@ public class BookService {
         return result;
     }
 
-    //update book
-
     //find book by id
     public Book findByid(long id){
         BookEntity entity = repository.findById(id).get();
@@ -64,11 +60,12 @@ public class BookService {
     }
 
     //create new book
-    public Book createBook(Book book) throws UnsupportedEncodingException {
+    public Book createBook(Book book) {
         BookEntity b = bookConvert.toEntity(book);
         b = repository.save(b);
         return bookConvert.toModel(b);
     }
+
     public Book updateBook(Book book){
 	    BookEntity b = bookConvert.toEntity(book);
 	    b = repository.save(b);

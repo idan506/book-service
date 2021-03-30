@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,11 +21,6 @@ public class TicketController {
     @GetMapping
     public List<Ticket> getAllTicket(){
         return ticketService.getAllTicket();
-    }
-
-    @GetMapping("/{id}")
-    public Ticket findTicketById(@PathVariable (name="id") long id){
-        return ticketService.findById(id);
     }
 
     @PostMapping
@@ -43,7 +40,7 @@ public class TicketController {
     }
 
     @GetMapping("/export")
-    public List<Ticket> listTicketExport(){
-        return ticketService.listTicketExport();
+    public List<Ticket> listTicketExport(@RequestParam(name = "firstDay")LocalDate firstDay, @RequestParam(name = "lastDay")LocalDate lastDay){
+        return ticketService.listTicketExport(firstDay,lastDay);
     }
 }

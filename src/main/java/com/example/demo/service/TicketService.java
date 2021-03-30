@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,11 +46,6 @@ public class TicketService {
                 .map(ticket -> ticketConvert.toModel(ticket))
                 .collect(Collectors.toList());
         return result;
-    }
-
-    public Ticket findById(long id){
-        TicketEntity entity = ticketRepository.findById(id).get();
-        return ticketConvert.toModel(entity);
     }
 
     @Transactional
@@ -95,8 +93,9 @@ public class TicketService {
     }
 
     @Transactional
-    public List<Ticket> listTicketExport(){
-        return ticketRepository.listTicketExport().stream()
+    public List<Ticket> listTicketExport(LocalDate firstDay, LocalDate lastDay){
+        return ticketRepository.listTicketExport(Date.from(firstDay.atStartOfDay(ZoneId.systemDefault()).toInstant()),
+                Date.from(lastDay.atStartOfDay(ZoneId.systemDefault()).toInstant())).stream()
                 .map(ticket -> ticketConvert.toModel(ticket))
                 .collect(Collectors.toList());
     }

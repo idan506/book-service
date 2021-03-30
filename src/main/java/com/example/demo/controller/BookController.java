@@ -16,7 +16,7 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping(path="/")
+@RequestMapping(path = "/")
 public class BookController {
 
     @Autowired
@@ -27,40 +27,40 @@ public class BookController {
     public Page retrieveBooks(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "20") int size) {
         return bookService.retrieveBooks(page, size);
     }
-	
-	@GetMapping
+
+    @GetMapping
     public List<Book> getAllBooks() {
         return bookService.getAllBook();
     }
 
     //list book user co the muon
     @GetMapping("/borrow")
-    public List<Book> getAllBooksByStatus(){
-
-        return  bookService.getAllBookAvailable();}
+    public List<Book> getAllBooksByStatus() {
+        return bookService.getAllBookAvailable();
+    }
 
     @GetMapping("/{id}")
-    public Book findBookByid(@PathVariable(name = "id")long id){
+    public Book findBookByid(@PathVariable(name = "id") long id) {
         return bookService.findByid(id);
     }
 
     @DeleteMapping
-    public int deleteBook(@RequestBody Book book){
+    public int deleteBook(@RequestBody Book book) {
         return bookService.deleteBook(book.getId());
     }
 
     @PostMapping
-    public Book addBook(@RequestBody Book book) throws UnsupportedEncodingException {
+    public Book addBook(@RequestBody Book book) {
         return bookService.createBook(book);
     }
 
     @PutMapping
-    public Book updateBook(@RequestBody Book book){
+    public Book updateBook(@RequestBody Book book) {
         return bookService.updateBook(book);
     }
 
     @PostMapping("/search")
-    public List<Book> listSearchBook(@RequestBody SearchCondition body){
+    public List<Book> listSearchBook(@RequestBody SearchCondition body) {
         return bookService.searchResult(body);
     }
 

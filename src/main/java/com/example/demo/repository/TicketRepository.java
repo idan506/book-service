@@ -3,15 +3,17 @@ package com.example.demo.repository;
 import com.example.demo.entity.TicketEntity;
 import com.example.demo.model.Ticket;
 import feign.Param;
+import org.apache.tomcat.jni.Local;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public interface TicketRepository extends JpaRepository<TicketEntity,Long> {
+public interface TicketRepository extends JpaRepository<TicketEntity, Long> {
 
     @Modifying
     @Query(value = "UPDATE TicketEntity b SET b.status = true, b.expirationDate =NOW() where b.id=:id")
@@ -26,7 +28,6 @@ public interface TicketRepository extends JpaRepository<TicketEntity,Long> {
     @Query(value = "select t from TicketEntity t where t.status = true")
     List<TicketEntity> listTicketByStatusTrue();
 
-    @Modifying
-    @Query(value = "select t from TicketEntity t where MONTH(t.dayOfHire) = MONTH(NOW()) and YEAR(t.dayOfHire) = YEAR(NOW())")
-    List<TicketEntity> listTicketExport();
+    @Query(value = "SELECT t FROM TicketEntity t WHERE t.dayOfHire >= :firstDay AND t.dayOfHire < :lastDay")
+    List<TicketEntity> listTicketExport(@Param("firstDay") Date firstDay, @Param("lastDay") Date lastDay);
 }

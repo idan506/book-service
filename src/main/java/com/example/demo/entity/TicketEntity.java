@@ -11,9 +11,6 @@ public class TicketEntity extends AbstractBaseEntity {
     @Column
     private String idUser;
 
-//    @Column
-//    private long idBook;
-
     public List<BookEntity> getBooks() {
         return books;
     }

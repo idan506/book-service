@@ -13,8 +13,6 @@ public class Ticket {
 
     private List<Book> books;
 
-
-
     public List<Book> getBooks() {
         return books;
     }
@@ -22,8 +20,6 @@ public class Ticket {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-
-
 
     public long getId() {
         return id;
